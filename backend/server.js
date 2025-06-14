@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const port = 4100;
+const port = 4200;
 const path = require('path');
 const loginRoute = require('./Routes/loginRoute');
 

@@ -18,18 +18,26 @@ const Login = () => {
         // Here you would typically handle the login logic, such as sending a request to your backend
        
 
-    const Data = await axios.post("http://localhost:4100/login", form)
-
-
-
-    console.log(Data.data.message);
-        
+        const yy= await axios.get("https://budgetbloom-app.onrender.com/login")
+        console.log(yy.data.message);
+    const Data = await axios.post("https://budgetbloom-app.onrender.com/login", form)
     
 
 
 
-
+    console.log(Data.data.message);
+    if (Data.data.message === "Login successful") {
+      alert("Login successful");
+      // Redirect to another page or perform other actions
+    } else {
+      alert("Invalid email or password");
     }
+  };
+
+
+
+
+    
   return (
 
     <div>
