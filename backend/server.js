@@ -8,10 +8,12 @@ const loginRoute = require('./Routes/loginRoute');
 
 const cors = require('cors');
 // Middleware to enable CORS
-app.use(cors());
-// Middleware to parse JSON
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
+
+app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174"] }));
+
+
 
 app.use("/", loginRoute );
 

@@ -5,6 +5,7 @@ const registerData = path.resolve("Models", "register.json");
 
  const loginController = async (req, res) => {
     const userInput = req.body;
+
     if  ( !userInput||!userInput.email || !userInput.password) {
         return res.status(400).json({ error: 'Email and password are required' });
     }
