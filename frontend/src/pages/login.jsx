@@ -17,13 +17,7 @@ const Login = () => {
         event.preventDefault();
         // Here you would typically handle the login logic, such as sending a request to your backend
        
-
-        const yy= await axios.get("https://budgetbloom-app.onrender.com/login")
-        console.log(yy.data.message);
     const Data = await axios.post("https://budgetbloom-app.onrender.com/login", form)
-    
-
-
 
     console.log(Data.data.message);
     if (Data.data.message === "Login successful") {
@@ -34,10 +28,6 @@ const Login = () => {
     }
   };
 
-
-
-
-    
   return (
 
     <div>
