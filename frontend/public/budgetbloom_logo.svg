@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="150" cy="150" r="125" fill="#4CAF50" />
+  <circle cx="150" cy="150" r="115" fill="#FFFFFF" />
+  
+  <!-- Flower/Bloom Elements -->
+  <!-- Center Coin -->
+  <circle cx="150" cy="150" r="35" fill="#FFD700" />
+  <circle cx="150" cy="150" r="30" fill="#FFC107" />
+  <text x="150" y="155" 
+        font-family="Arial, sans-serif" 
+        font-weight="bold" 
+        font-size="18" 
+        text-anchor="middle" 
+        fill="#5D4037">$</text>
+  
+  <!-- Petals/Leaves (representing financial growth) -->
+  <!-- Petal 1 -->
+  <path d="M150 115 Q110 70 150 30 Q190 70 150 115" fill="#4CAF50" />
+  <!-- Petal 2 -->
+  <path d="M185 150 Q230 110 270 150 Q230 190 185 150" fill="#66BB6A" />
+  <!-- Petal 3 -->
+  <path d="M150 185 Q190 230 150 270 Q110 230 150 185" fill="#81C784" />
+  <!-- Petal 4 -->
+  <path d="M115 150 Q70 190 30 150 Q70 110 115 150" fill="#A5D6A7" />
+  
+  <!-- Coin Stack (representing budget/savings) -->
+  <ellipse cx="110" cy="190" rx="18" ry="10" fill="#FFC107" />
+  <ellipse cx="110" cy="184" rx="18" ry="10" fill="#FFD54F" />
+  <ellipse cx="110" cy="178" rx="18" ry="10" fill="#FFE082" />
+  <ellipse cx="110" cy="172" rx="18" ry="10" fill="#FFECB3" />
+  
+  <!-- Small Graph (representing financial tracking) -->
+  <polyline points="190,190 198,175 206,180 214,165 222,160" 
+            stroke="#5D4037" 
+            stroke-width="3" 
+            stroke-linecap="round" 
+            fill="none" />
+  <circle cx="190" cy="190" r="3" fill="#5D4037" />
+  <circle cx="198" cy="175" r="3" fill="#5D4037" />
+  <circle cx="206" cy="180" r="3" fill="#5D4037" />
+  <circle cx="214" cy="165" r="3" fill="#5D4037" />
+  <circle cx="222" cy="160" r="3" fill="#5D4037" />
+  
+  <!-- App Name -->
+  <text x="150" y="235" 
+        font-family="Arial, sans-serif" 
+        font-weight="bold" 
+        font-size="26" 
+        text-anchor="middle" 
+        fill="#2E7D32">Budget<tspan fill="#FF8F00">Bloom</tspan></text>
+  
+  <!-- Tagline -->
+  <text x="150" y="255" 
+        font-family="Arial, sans-serif" 
+        font-style="italic" 
+        font-size="14" 
+        text-anchor="middle" 
+        fill="#5D4037">Watch your finances flourish</text>
+</svg>
