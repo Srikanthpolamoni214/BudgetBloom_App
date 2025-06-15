@@ -36,18 +36,18 @@ const Login = () => {
           navigate("/dashboard");
         }, 2000);
       }
+      else if (res.status === 401) {
+      alert("Invalid credentials");
+    }
       else{
         alert("Login failed")
       }
     } catch (error) {
-      console.log(error)
-      if (error.status==401){
-        alert("Invalid credentials")
-      }
-      else{
+      
+      
       alert("Something went wrong: " + error.message);
 
-      }
+      
     }
   };
 

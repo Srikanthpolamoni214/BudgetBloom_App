@@ -18,7 +18,7 @@ const port = 4200;
 
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://your-frontend-domain.com"],
+  origin: ["http://localhost:5173", "https://budgetbloom-app-ncdf.onrender.com"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
