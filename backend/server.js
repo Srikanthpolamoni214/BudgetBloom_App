@@ -8,13 +8,16 @@ const cors = require('cors');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 
-
+const dotenv = require('dotenv');
 
 const loginRoute = require('./Routes/loginRoute');
 const registerRoute = require('./Routes/registerRoute');
 
 const app = express();
-const port = 4200;
+dotenv.config()
+const port = process.env.PORT || 3000;
+
+
 
 
 app.use(cors({
