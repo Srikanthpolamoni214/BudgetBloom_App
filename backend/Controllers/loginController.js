@@ -30,7 +30,7 @@ const SECRET_KEY = "srikanth@214"
             { expiresIn: '1h' },
         )
         
-            return res.json({ message: 'Login successful', user , token });
+            return res.status(200).json({ message: 'Login successful', user , token });
 
             
         }
@@ -38,7 +38,7 @@ const SECRET_KEY = "srikanth@214"
      
         
          else {
-            return res.json({ error: 'Invalid email or password' });
+            return res.status(401).json({ error: 'Invalid email or password' });
         }
     }
 

@@ -21,11 +21,18 @@ const Login = () => {
   const handleSubmit = async(event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4200/login", form);
+      const response = await axios.post("https://budgetbloom-app.onrender.com/login", form);
 
       console.log(response)
       if (response.data.token){
+        localStorage.setItem("token", response.data.token)
         alert("Login Success");
+        setTimeout(() => {
+
+                     navigate("/dashboard")
+
+        }, 2000);
+
       }
     else{
       alert("Invalid credentials")
@@ -35,11 +42,12 @@ const Login = () => {
     } 
     catch (error) {
          
-  if (error.response && error.response.status === 401) {
-    alert("Invalid email or password");
-  } else {
+ if (error.status==401){
+  alert("Invalid email or password")
+ }
+ 
     alert("Something went wrong: " + error.message);
-  }
+  
     }
   };
 
