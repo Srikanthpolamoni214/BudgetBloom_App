@@ -1,9 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     email: "",
@@ -18,36 +17,37 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://budgetbloom-app.onrender.com/login", form);
+     const res = await fetch("https://budgetbloom-app.onrender.com/login", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(form),
+});
 
-      console.log(response)
-      if (response.data.token){
-        localStorage.setItem("token", response.data.token)
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem("token", data.token);
         alert("Login Success");
         setTimeout(() => {
-
-                     navigate("/dashboard")
-
+          navigate("/dashboard");
         }, 2000);
+      }
+      else{
+        alert("Login failed")
+      }
+    } catch (error) {
+      console.log(error)
+      if (error.status==401){
+        alert("Invalid credentials")
+      }
+      else{
+      alert("Something went wrong: " + error.message);
 
       }
-    else{
-      alert("Invalid credentials")
-    }
-
-    
-    } 
-    catch (error) {
-         
- if (error.status==401){
-  alert("Invalid email or password")
- }
- 
-    alert("Something went wrong: " + error.message);
-  
     }
   };
 

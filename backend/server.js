@@ -16,9 +16,16 @@ const registerRoute = require('./Routes/registerRoute');
 const app = express();
 const port = 4200;
 
-app.use(cors())
+
+app.use(cors({
+  origin: ["http://localhost:5173", "https://your-frontend-domain.com"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+}));
+
 // Middleware
 app.use(express.json());
+
 
 // Enable CORS for specific origin
 // app.use(cors({ origin: "http://localhost:5173" }));
