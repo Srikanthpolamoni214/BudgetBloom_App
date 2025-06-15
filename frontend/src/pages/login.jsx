@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate()
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -15,35 +18,28 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     try {
-      const res = await axios.get("http://localhost:4200/login");
-      console.log("Response from GET request:", res.data);
-      // const response = await fetch("http://localhost:4200/login", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(form),
-      // });
-      // console.log("Response :", response);
-      // if (!response.ok) {
-      //   alert("Login failed. Please check your credentials.");
-      //   throw new Error("Login failed");
-      // } 
-      // const data = await response.json();
-      // if (data.message === "Login successful") {
-      //   alert("Login successful!");
-      //   // Redirect to dashboard or home page
-      //   window.location.href = "/dashboard"; // Adjust the redirect as needed
-      // } else {
-      //   alert(data.message || "Login failed. Please try again.");
-      // }
+      const response = await axios.post("http://localhost:4200/login", form);
+
+      console.log(response)
+      if (response.data.token){
+        alert("Login Success");
+      }
+    else{
+      alert("Invalid credentials")
+    }
+
     
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("An error occurred during login.");
+    } 
+    catch (error) {
+         
+  if (error.response && error.response.status === 401) {
+    alert("Invalid email or password");
+  } else {
+    alert("Something went wrong: " + error.message);
+  }
     }
   };
 
@@ -52,9 +48,8 @@ const Login = () => {
       <h1>Login Page</h1>
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="email"
           name="email"
-          value={form.email}
           onChange={handleChange}
           required
           placeholder="Email"
@@ -62,7 +57,6 @@ const Login = () => {
         <input
           type="password"
           name="password"
-          value={form.password}
           onChange={handleChange}
           required
           placeholder="Password"

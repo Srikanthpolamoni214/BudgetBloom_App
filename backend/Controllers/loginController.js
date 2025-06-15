@@ -2,6 +2,8 @@
 const path = require('path');
 const fs = require('fs');
 const registerData = path.resolve("Models", "register.json");
+const jwt = require("jsonwebtoken")
+const SECRET_KEY = "srikanth@214"
 
  const loginController = async (req, res) => {
     const userInput = req.body;
@@ -17,11 +19,26 @@ const registerData = path.resolve("Models", "register.json");
         const users = JSON.parse(data);
         
         const user = users.find(user => user.email === userInput.email && user.password === userInput.password);
-        
+      
+
         if (user) {
-            return res.status(200).json({ message: 'Login successful', user });
-        } else {
-            return res.status(401).json({ error: 'Invalid email or password' });
+             const token= jwt.sign( 
+            {
+                email: user.email,password : user.password
+             },
+           SECRET_KEY,
+            { expiresIn: '1h' },
+        )
+        
+            return res.json({ message: 'Login successful', user , token });
+
+            
+        }
+
+     
+        
+         else {
+            return res.json({ error: 'Invalid email or password' });
         }
     }
 

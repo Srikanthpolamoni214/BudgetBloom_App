@@ -4,6 +4,8 @@ const router = express.Router();
 
 
 const { loginController } = require('../Controllers/loginController');
+
+
 // Define the login route
 router.post('/login', loginController);
 

@@ -1,23 +1,33 @@
-const express = require('express');
+
+
+
+
+
+    const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const jwt = require('jsonwebtoken');
+
+
+
+const loginRoute = require('./Routes/loginRoute');
+const registerRoute = require('./Routes/registerRoute');
 
 const app = express();
 const port = 4200;
-const path = require('path');
-const loginRoute = require('./Routes/loginRoute');
 
-
-const cors = require('cors');
-// Middleware to enable CORS
+app.use(cors())
+// Middleware
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174"] }));
+// Enable CORS for specific origin
+// app.use(cors({ origin: "http://localhost:5173" }));
 
+// Routes
+app.use("/", loginRoute);
+app.use("/", registerRoute);
 
-
-app.use("/", loginRoute );
-
-
+// Server
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-    });
+  console.log(`Server is running at http://localhost:${port}`);
+});
