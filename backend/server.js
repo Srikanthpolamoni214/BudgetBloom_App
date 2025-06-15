@@ -15,13 +15,13 @@ const registerRoute = require('./Routes/registerRoute');
 
 const app = express();
 dotenv.config()
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3200;
 
 
 
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://budgetbloom-app-ncdf.onrender.com"],
+  origin: ["https://budgetbloom-app-ncdf.onrender.com","http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
