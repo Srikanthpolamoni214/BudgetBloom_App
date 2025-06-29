@@ -1,0 +1,38 @@
+[
+  {
+    "source": "investing",
+    "amount": "2000",
+    "category": "trading",
+    "date": "2025-06-17"
+  },
+  {
+    "source": "investing",
+    "amount": "2000",
+    "category": "trading",
+    "date": "2025-06-17"
+  },
+  {
+    "source": "investing",
+    "amount": "2000",
+    "category": "trading",
+    "date": "2025-06-17"
+  },
+  {
+    "source": "online trade",
+    "amount": "2000",
+    "category": "online trading",
+    "date": "2025-06-17"
+  },
+  {
+    "source": "investing",
+    "amount": "2000",
+    "category": "jj",
+    "date": "2025-06-17"
+  },
+  {
+    "source": "investing",
+    "amount": "1100000",
+    "category": "jj",
+    "date": "2025-01-04"
+  }
+]

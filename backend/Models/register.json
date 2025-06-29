@@ -38,5 +38,21 @@
     "password": "123456789",
     "age": "22",
     "gender": "male"
+  },
+  {
+    "name": "sai",
+    "phoneNumber": "7842668558",
+    "email": "sai@gmail.com",
+    "password": "7842668558",
+    "age": "28",
+    "gender": "male"
+  },
+  {
+    "name": "sai",
+    "phoneNumber": "7842668558",
+    "email": "saikumar@gmail.com",
+    "password": "7842668558",
+    "age": "28",
+    "gender": "male"
   }
 ]
