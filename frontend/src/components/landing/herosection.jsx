@@ -15,12 +15,11 @@ const HeroSection = () => {
           BudgetBloom helps you track income, manage expenses, plan budgets, and achieve your financial goals—all in one secure platform.
         </p>
         <div className="flex justify-center gap-6">
-          <a href="/register" className="bg-green-700 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-green-800 transition">
-            Start Budgeting
-          </a>
-          <a href="/login" className="border border-green-700 text-green-700 font-semibold py-3 px-6 rounded-md hover:bg-green-100 transition">
-            I already have an account
-          </a>
+         
+         <Link to = "/register" className="bg-green-700 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-green-800 transition">
+                     Start Budgeting
+
+         </Link>
           <Link to = "/login" className="border border-green-700 text-green-700 font-semibold py-3 px-6 rounded -md hover:bg-green-100 transition">
                       I already have an account
 
