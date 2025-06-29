@@ -1,6 +1,7 @@
 
 // HeroSection.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -20,6 +21,10 @@ const HeroSection = () => {
           <a href="/login" className="border border-green-700 text-green-700 font-semibold py-3 px-6 rounded-md hover:bg-green-100 transition">
             I already have an account
           </a>
+          <Link to = "/login" className="border border-green-700 text-green-700 font-semibold py-3 px-6 rounded -md hover:bg-green-100 transition">
+                      I already have an account
+
+          </Link>
         </div>
       </div>
     </section>
