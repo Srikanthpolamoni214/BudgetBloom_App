@@ -28,10 +28,11 @@ const port = process.env.PORT || 3200;
 
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://budgetbloom-app-ncdf.onrender.com'],
+  origin: ['http://localhost:5174', 'https://budgetbloom-app-ncdf.onrender.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+
 
 // Middleware
 app.use(express.json());
