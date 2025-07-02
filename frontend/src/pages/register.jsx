@@ -17,7 +17,7 @@ const Register = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3201/register", {
+      const res = await fetch("https://budgetbloom-app.onrender.comregister", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

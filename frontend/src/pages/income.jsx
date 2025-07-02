@@ -15,7 +15,7 @@ const IncomePage = () => {
   useEffect(() => {
     const fetchIncome = async () => {
       try {
-        const response = await axios.get('http://localhost:3201/getIncome');
+        const response = await axios.get('https://budgetbloom-app.onrender.com/getIncome');
         setIncomeData(response.data);
         setFilteredData(response.data);
       } catch (err) {

@@ -8,13 +8,13 @@ const SavingsGrowthChart = () => {
   const [income, setIncome] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3201/report")
+    fetch("https://budgetbloom-app.onrender.com/report")
       .then((res) => res.json())
       .then((data) => setExpenses(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3201/getIncome")
+    fetch("https://budgetbloom-app.onrender.comgetIncome")
       .then((res) => res.json())
       .then((data) => setIncome(data));
   }, []);

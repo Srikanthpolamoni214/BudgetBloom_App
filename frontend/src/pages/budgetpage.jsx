@@ -9,7 +9,7 @@ const BudgetPage = () => {
 
   useEffect(() => {
     // Fetch budget data from backend
-    fetch('http://localhost:3201/budgets')
+    fetch('https://budgetbloom-app.onrender.com/budgets')
       .then(res => res.json())
       .then(data => setBudgets(data))
           .catch(err => console.error("Fetch error:", err));
@@ -18,7 +18,7 @@ const BudgetPage = () => {
 
   const addBudget = (newItem) => {
     // Call backend to save
-    fetch('http://localhost:3201/budgets', {
+    fetch('https://budgetbloom-app.onrender.com/budgets', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...newItem, spent: 0 }),
@@ -28,7 +28,7 @@ const BudgetPage = () => {
   };
 
   const deleteBudget = (id) => {
-    fetch(`http://localhost:3201/budgets/${id}`, { method: 'DELETE' })
+    fetch(`https://budgetbloom-app.onrender.com/budgets/${id}`, { method: 'DELETE' })
       .then(() => setBudgets(budgets.filter(b => b.id !== id)));
   };
 

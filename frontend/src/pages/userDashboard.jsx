@@ -87,8 +87,8 @@ const UserDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const [incomeRes, expenseRes] = await Promise.all([
-          fetch('http://localhost:3201/getIncome', { signal: controller.signal }),
-          fetch('http://localhost:3201/expenses', { signal: controller.signal }),
+          fetch('https://budgetbloom-app.onrender.com/getIncome', { signal: controller.signal }),
+          fetch('https://budgetbloom-app.onrender.com/expenses', { signal: controller.signal }),
         ]);
 
         const incomeJson = await incomeRes.json();
