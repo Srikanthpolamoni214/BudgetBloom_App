@@ -9,6 +9,10 @@ const IncomeForm = ({ onIncomeAdded }) => {
     category: '',
     date: ''
   });
+  const token = localStorage.getItem("token")
+      const config = { headers: { authorization: `Bearer ${token}` } };
+
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,7 +21,7 @@ const IncomeForm = ({ onIncomeAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3201/income', formData);
+      const response = await axios.post('http://localhost:3201/income', formData, config);
       if (response.data.message === "Income Added Successfully") {
         const updatedIncome = await axios.get('http://localhost:3201/getIncome');
         onIncomeAdded(updatedIncome.data);

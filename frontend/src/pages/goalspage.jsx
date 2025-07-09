@@ -1,4 +1,4 @@
-import GoalChart from '../components/goalspageComponents/goalsChart';
+
 import GoalForm from '../components/goalspageComponents/goalsForm';
 import GoalTracker from '../components/goalspageComponents/goalsTracker';
 

@@ -13,11 +13,13 @@ const ExpensePage = () => {
   const [filteredExpenses, setFilteredExpenses] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('date-desc');
+  const token = localStorage.getItem("token"); // Get token from storage
+  const config = { headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` } };
 
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get('https://budgetbloom-app.onrender.com/expenses');
+        const response = await axios.get('http://localhost:3201/expenses',  config );
         setExpenses(response.data);
         setFilteredExpenses(response.data);
       } catch (err) {

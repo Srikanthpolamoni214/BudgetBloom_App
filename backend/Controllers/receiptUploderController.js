@@ -14,11 +14,13 @@ cb(null, path.join(__dirname, "uploads"));
   // },
   filename: function (req, file, cb) {
     cb(null, new Date().toISOString().replace(/:/g, "-") + "-" + file.originalname);
+  // cb(null, file.originalname); // Use original filename
 }
 
 });
 
 const upload = multer({ storage: storage });
+ 
 
 
 

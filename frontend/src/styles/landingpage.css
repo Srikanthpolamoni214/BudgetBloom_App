@@ -1,5 +1,29 @@
 /* Enhanced styles for Landing Page */
 
+button {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  display: inline-block;
+  color: #276749;
+  background-color: #d1fae5;
+  text-decoration: none;
+  transition:
+    background-color 1s ease,
+    color 0.5s ease,
+    transform 0.5s ease,
+    box-shadow 1s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #22db85;
+  color: #22543d;
+  cursor: pointer;
+}
+
 /* Smooth fade-in animation for sections */
 @keyframes fadeInUp {
   from {
@@ -22,6 +46,21 @@ body, #root, .flex.flex-col.min-h-screen {
   font-family: 'Inter', sans-serif;
   color: #276749; /* Dark green text */
   line-height: 1.6;
+}
+
+/* Apply #276749 color broadly to key landing page elements */
+h1, h2, h3, h4, h5, h6 {
+  color: #276749;
+}
+
+/* Removed broad button, a, .btn background color and hover styles */
+
+section, .section {
+  border-color: #276749;
+}
+
+p, span, li, label {
+  color: #276749;
 }
 
 /* Enhance HeroSection heading */
@@ -185,22 +224,22 @@ section div.grid > div > p {
 
 /* Footer styles */
 footer {
-  background-color: #f9fafb; /* Tailwind gray-50 */
+  background-color: #276749; /* Updated to requested color */
   padding: 2rem 1rem;
   text-align: center;
-  border-top: 1px solid #e5e7eb; /* Tailwind gray-200 */
+  border-top: 1px solid #22543d; /* Darker green border */
   margin-top: auto;
 }
 
 footer p {
-  color: #4a5568; /* Tailwind gray-700 */
+  color: #ffffff; /* Changed to white for contrast */
   font-weight: 500;
   font-size: 0.875rem;
 }
 
 footer a {
   margin: 0 0.75rem;
-  color: #4a5568; /* Tailwind gray-700 */
+  color: #ffffff; /* Changed to white */
   transition: color 0.3s ease;
   font-weight: 600;
   border-bottom: 2px solid transparent;
@@ -209,7 +248,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #6ee7b7; /* Tailwind green-300 */
+  color: #a3f7bf; /* Lighter shade for hover */
   text-decoration: none;
   border-bottom-color: #a7f3d0;
 }

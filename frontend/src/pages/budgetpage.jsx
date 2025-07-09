@@ -6,10 +6,11 @@ import AlertsList from '../components/budget/alertList';
 
 const BudgetPage = () => {
   const [budgets, setBudgets] = useState([]);
-
+const token = localStorage.getItem("token");
+const config = { headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}` } };
   useEffect(() => {
     // Fetch budget data from backend
-    fetch('https://budgetbloom-app.onrender.com/budgets')
+    fetch('http://localhost:3201/budgets', config)
       .then(res => res.json())
       .then(data => setBudgets(data))
           .catch(err => console.error("Fetch error:", err));
@@ -18,9 +19,11 @@ const BudgetPage = () => {
 
   const addBudget = (newItem) => {
     // Call backend to save
-    fetch('https://budgetbloom-app.onrender.com/budgets', {
+    fetch('http://localhost:3201/budgets', {
+
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      
+      headers:  config.headers,
       body: JSON.stringify({ ...newItem, spent: 0 }),
     })
       .then(res => res.json())
@@ -28,7 +31,7 @@ const BudgetPage = () => {
   };
 
   const deleteBudget = (id) => {
-    fetch(`https://budgetbloom-app.onrender.com/budgets/${id}`, { method: 'DELETE' })
+    fetch(`http://localhost:3201/budgets/${id}`, { method: 'DELETE' , headers: config.headers })
       .then(() => setBudgets(budgets.filter(b => b.id !== id)));
   };
 

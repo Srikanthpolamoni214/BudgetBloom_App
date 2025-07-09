@@ -20,7 +20,7 @@ const BudgetTable = ({ budgets, onDelete }) => {
             <td className="p-2">₹{item.spent}</td>
             <td className="p-2 text-green-600">₹{item.amount - item.spent}</td>
             <td className="p-2">
-              <button onClick={() => onDelete(item.id)} className="text-red-500 hover:underline">Delete</button>
+              <button onClick={() => onDelete(item.budget_id)} className="text-red-500 hover:underline">Delete</button>
             </td>
           </tr>
         ))}

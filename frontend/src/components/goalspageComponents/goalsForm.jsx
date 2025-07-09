@@ -7,14 +7,15 @@ const GoalForm = ({ onAdd }) => {
   const handleChange = (e) => {
     setGoal({ ...goal, [e.target.name]: e.target.value });
   };
-
+const token = localStorage.getItem("token");
+const config = { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!goal.name || !goal.amount || !goal.targetDate) return alert('Fill all required fields');
 
-    const res = await fetch('http://localhost:3201/api/goals', {
+    const res = await fetch('http://localhost:3201/api/goalsTracker', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers:  config.headers,
       body: JSON.stringify(goal),
     });
 
@@ -36,4 +37,3 @@ const GoalForm = ({ onAdd }) => {
 };
 
 export default GoalForm;
-

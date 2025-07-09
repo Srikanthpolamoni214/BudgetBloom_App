@@ -14,6 +14,11 @@ import SettingsPage from './pages/settings';
 
 // Components
 import Navbar from './components/navbar/navbar';
+import AboutUs from './components/landing/aboutUs';
+import ContactUs from './components/landing/contactUs';
+import Ratings from './components/landing/rating';
+import ProtectedRoute from './components/common/protectedRoutes';
+import Profile from './components/profile/profile';
 
 const App = () => {
   return (
@@ -27,11 +32,19 @@ const App = () => {
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<LandingPage />} />
+            <Route path="/rating" element={<Ratings />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
-
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contactus" element={<ContactUs />} />
             {/* Protected Routes (Add auth guard if needed) */}
-            <Route path="/dashboard" element={<UserDashboard />} />
+             
+
+            <Route path="/dashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
+            {/* Protected Routes */} 
+<Route path="/profile" element={<Profile />} />
+  
+
             <Route path="/income" element={<IncomePage />} />
             <Route path="/expenses" element={<ExpensePage />} />
             <Route path="/budgetpage" element={<BudgetPage />} />

@@ -21,14 +21,18 @@ const goalsRoute = require('./Routes/goalsRoute');
 const budgetRoute = require('./Routes/budgetRoute');
 const goalsTrackerRoute = require('./Routes/goalsTrackerRoute');
 const reportRoute = require("./Routes/reportRoute")
+const allTransactions = require('./Routes/allTransactions');
+const goalRouter = require('./Routes/goalsRouter');
+const reviewRoute = require('./Routes/ratingsRoute');
+const googleAuthRoutes = require('./Routes/googleAuth')
 const app = express();
 dotenv.config()
 const port = process.env.PORT || 3200;
 
-
+const verifyRouter = require('./Routes/verifyEmailRoute')
 
 app.use(cors({
-  origin: ['http://localhost:5174', 'https://budgetbloom-app-ncdf.onrender.com'],
+  origin: ['http://localhost:5173', 'https://budgetbloom-app-ncdf.onrender.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
@@ -50,17 +54,25 @@ app.use("/" ,  incomeRoute);
 app.use("/" ,  expensesRoute)
 app.use("/", receiptUploderRoute)
 app.use("/api/settings/", userSettingsRoute)
-app.use("/api/goal", goalsRoute);
+app.use("/api/goals", goalsRoute);
 app.use('/budgets', budgetRoute); // 👈 Mount the route
 app.use("/" , reportRoute)
+app.use('/', allTransactions);
+app.use('/', goalRouter);
+app.use('/api/reviews', reviewRoute);
+app.use('/', verifyRouter)
+app.use('/', googleAuthRoutes);
+// server.js
+
+// Ensure 'uploads' directory exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
 
 
-const dataDir = path.join(__dirname, 'Models');
-const goalsFile = path.join(dataDir, 'goalstracker.json');
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir);
-if (!fs.existsSync(goalsFile)) fs.writeFileSync(goalsFile, '[]');
 
-app.use('/api/goals', goalsTrackerRoute);
+app.use('/api/goalsTracker', goalsTrackerRoute);
 
 // Server
 app.listen(port, () => {

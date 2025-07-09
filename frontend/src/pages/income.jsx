@@ -14,9 +14,17 @@ const IncomePage = () => {
 
   useEffect(() => {
     const fetchIncome = async () => {
+
+      const token = localStorage.getItem("token"); // ✅ Get token from storage
+
+           const config = { headers: { authorization: `Bearer ${token}` } };
+
+
       try {
-        const response = await axios.get('https://budgetbloom-app.onrender.com/getIncome');
+        const response = await axios.get('http://localhost:3201/getIncome',  config);
+        console.log('Fetched income data:', response.data);
         setIncomeData(response.data);
+console.log( 'Setting filtered data:', response.data);
         setFilteredData(response.data);
       } catch (err) {
         console.error('Failed to fetch income:', err);

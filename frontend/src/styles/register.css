@@ -1,0 +1,139 @@
+/* Container for the register page */
+.register-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  padding: 4rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form inputs */
+.register-container .input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.register-container .input:focus {
+  outline: none;
+  border-color: #4f46e5; /* Indigo-600 */
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+}
+
+/* File input styling */
+.register-container input[type="file"] {
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #6b7280; /* Gray-500 */
+  background-color: #f9fafb; /* Gray-50 */
+  transition: background-color 0.3s ease;
+}
+
+.register-container input[type="file"]:hover {
+  background-color: #e0e7ff; /* Indigo-100 */
+}
+
+/* Preview image */
+.register-container img {
+  display: block;
+  margin: 0.5rem auto 1rem auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 2px solid #4f46e5; /* Indigo-600 */
+}
+
+/* Submit button */
+.register-container button[type="submit"] {
+  width: 100%;
+  background-color: #4f46e5; /* Indigo-600 */
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-container button[type="submit"]:hover {
+  background-color: #4338ca; /* Indigo-700 */
+}
+
+/* Link below form */
+.register-container p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #6b7280; /* Gray-500 */
+}
+
+.register-container p a {
+  color: #4f46e5; /* Indigo-600 */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-container p a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .register-container {
+    background-color: #1f2937; /* Gray-800 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  }
+
+  .register-container .input {
+    background-color: #374151; /* Gray-700 */
+    border-color: #4b5563; /* Gray-600 */
+    color: #d1d5db; /* Gray-300 */
+  }
+
+  .register-container .input:focus {
+    border-color: #818cf8; /* Indigo-400 */
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.3);
+  }
+
+  .register-container input[type="file"] {
+    background-color: #374151; /* Gray-700 */
+    color: #9ca3af; /* Gray-400 */
+    border-color: #4b5563; /* Gray-600 */
+  }
+
+  .register-container input[type="file"]:hover {
+    background-color: #4b5563; /* Gray-600 */
+  }
+
+  .register-container img {
+    border-color: #818cf8; /* Indigo-400 */
+  }
+
+  .register-container button[type="submit"] {
+    background-color: #818cf8; /* Indigo-400 */
+    color: #1f2937; /* Gray-800 */
+  }
+
+  .register-container button[type="submit"]:hover {
+    background-color: #6366f1; /* Indigo-500 */
+  }
+
+  .register-container p {
+    color: #9ca3af; /* Gray-400 */
+  }
+
+  .register-container p a {
+    color: #818cf8; /* Indigo-400 */
+  }
+}

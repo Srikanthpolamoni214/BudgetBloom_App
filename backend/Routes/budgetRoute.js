@@ -1,58 +1,79 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+const express = require("express");
 const router = express.Router();
 
-const filePath = path.resolve("Models", 'budgets.json');
+const db = require("../Models/db"); // Assuming db.js is in the Models directory
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv")
+dotenv.config()
+const SECRET_KEY = process.env.SECRET_KEY;
 
-// Utility to read and write JSON file
-const readData = () => {
-  if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, JSON.stringify([]));
-  const data = fs.readFileSync(filePath);
-  return JSON.parse(data);
-};
 
-const writeData = (data) => {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+const authenticate = (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "Unauthorized" });
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) return res.status(403).json({ error: "Forbidden" });
+    req.user = user;
+    next();
+  });
 };
 
 // 📥 GET all budgets
-router.get('/', (req, res) => {
-  const data = readData();
-  res.json(data);
+router.get("/",  authenticate ,(req, res) => {
+  // const data = readData();
+  db.query("SELECT * FROM budget WHERE id = ?", [req.user.id], (err, results) => {
+    if (err) {
+      console.error("Error fetching budgets:", err);
+      return res.status(500).json({ error: "Database error" });
+    }
+    res.json(results);
+  });
 });
 
 // ➕ POST new budget category
-router.post('/', (req, res) => {
+router.post("/", authenticate, (req, res) => {
   const { name, amount, spent = 0 } = req.body;
-  if (!name || amount == null) return res.status(400).json({ error: "Invalid data" });
+  if (!name || amount == null)
+    return res.status(400).json({ error: "Invalid data" });
 
-  const data = readData();
+  // const data = readData();
   const newBudget = {
-    id: Date.now(),
+    id: req.user.id,
     name,
     amount: parseFloat(amount),
     spent: parseFloat(spent),
   };
 
-  data.push(newBudget);
-  writeData(data);
-
-  res.status(201).json(newBudget);
+  db.query(
+    "INSERT INTO budget (name, amount, spent, id) VALUES (?, ?, ?, ?)",
+    [newBudget.name, newBudget.amount, newBudget.spent, newBudget.id],
+    (err, result) => {
+      if (err) {
+        console.error("Error inserting budget:", err);
+        return res.status(500).json({ error: "Database error" });
+      }
+      res.status(201).json(newBudget);
+    }
+  );
 });
 
-// ❌ DELETE a budget category
-router.delete('/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  let data = readData();
-  const newData = data.filter(item => item.id !== id);
+// ✅ Corrected DELETE route
+router.delete("/:budget_id", authenticate, (req, res) => {
+  const budgetId = parseInt(req.params.budget_id);
+  const userId = req.user.id;
 
-  if (newData.length === data.length) {
-    return res.status(404).json({ error: "Budget not found" });
-  }
+  db.query("DELETE FROM budget WHERE budget_id = ? AND id = ?", [budgetId, userId], (err, result) => {
+    if (err) {
+      console.error("Error deleting budget:", err);
+      return res.status(500).json({ error: "Database error" });
+    }
 
-  writeData(newData);
-  res.json({ success: true });
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Budget not found or unauthorized" });
+    }
+
+    res.json({ success: true });
+  });
 });
-
 module.exports = router;

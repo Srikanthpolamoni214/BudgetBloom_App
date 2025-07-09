@@ -1,14 +1,103 @@
 /* Basic structure */
+.profileDropdown {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  
+  background-color:  rgba(161, 231, 196, 0.864);
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  z-index: 100;
+  min-width: 180px;
+  padding: 8px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #fdf8f8;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.profileDropdown a,
+.profileDropdown button {
+  font-weight: bolder;
+  display: block;
+  width: 70%;
+  padding: 10px 20px;
+  text-align: left;
+
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  color:  rgba(28, 74, 52, 0.864);
+}
+.profileDropdown button{
+  background-color:  rgba(28, 74, 52, 0.864);
+  color: white;
+}
+.profileDropdown a:hover,
+.profileDropdown button:hover {
+  background-color:  rgba(216, 226, 221, 0.864);
+  outline: none;
+  box-shadow: inset 3px 0 0 #007bff;
+  border-radius: 0 4px 4px 0;
+  color:  rgba(28, 74, 52, 0.864);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .profileDropdown {
+    color: #e2e8f0;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.7);
+  }
+
+ 
+  .profileDropdown a:hover,
+  .profileDropdown button:hover {
+    background-color: rgba(28, 74, 52, 0.864);
+    color: #dfe7ed;
+    box-shadow: inset 3px 0 0 #63b3ed;
+  }
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ccc;
+  background-color: rgba(28, 74, 52, 0.864); /* Updated to requested color */
+  border-bottom: 1px solid #22543d; /* Darker shade of #276749 */
   position: relative;
   z-index: 10;
 }
+
+.Link {
+  text-decoration: none;
+  color: #ffffff !important; /* Force white color for nav items */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.Link:hover {
+  color:  rgba(28, 74, 52, 0.864); /* Lighter shade for hover */
+}
+
+.hamIcon {
+  font-size: 1.5rem;
+  margin-left: 10px;
+  display: none;
+  cursor: pointer;
+  color: #ffffff; /* Changed to white */
+  transition: color 0.3s ease;
+}
+
+.hamIcon:hover {
+  color: #a3f7bf; /* Lighter shade for hover */
+}
+
+/* Profile dropdown adjustments for contrast */
+
+
+
 
 /* Left */
 .leftNav {
@@ -114,14 +203,13 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  flex-direction: column;
 }
 /* Profile Icon */
 .profileIcon {
-  display: flex;
   align-items: center;
-  gap: 5px;
   cursor: pointer;
-  padding: 6px 10px;
+  padding-right: 30px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
@@ -170,11 +258,6 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.logoutBtn:hover {
-  background-color: #d32f2f;
 }
 
 /* Animation */

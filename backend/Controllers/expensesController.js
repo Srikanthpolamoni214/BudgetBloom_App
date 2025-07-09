@@ -1,49 +1,89 @@
 const fs = require("fs")
 const path = require("path")
-const expensesFile = path.resolve("Models", "expenses.json");
-const budgetFile = path.resolve("Models" , "budgets.json");
-const readExpenses = () =>{
-    try {
-        const data = fs.readFileSync(expensesFile, "utf8");
-        return JSON.parse(data);
-        } catch (error) {
-            console.log("Error reading expenses file");
-            return [];
-            }
+const jwt = require("jsonwebtoken");
+const db = require("../Models/db"); // Assuming db.js is in the Models directory
+const dotenv =require("dotenv")
+dotenv.config()
+const SECRET_KEY = process.env.SECRET_KEY
+// const expensesFile = path.resolve("Models", "expenses.json");
+// const budgetFile = path.resolve("Models" , "budgets.json");
+// const readExpenses = () =>{
+//     try {
+//         const data = fs.readFileSync(expensesFile, "utf8");
+//         return JSON.parse(data);
+//         } catch (error) {
+//             console.log("Error reading expenses file");
+//             return [];
+//             }
 
-}
+// }
+// JWT middleware
+const authenticate = (req, res, next) => {
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) return res.status(401).send("No token provided.");
+  const token = authHeader.split(" ")[1];
+  if (!token) return res.status(401).send("Invalid token format.");
+  try {
+    const decoded = jwt.verify(token, SECRET_KEY);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    return res.status(400).send("Invalid or expired token.");
+  }
+};
 const expensespost = (req, res) =>{
     const {description, amount, date, category,month} = req.body;
-    fs.writeFileSync( expensesFile, JSON.stringify([...readExpenses(), {description, amount:parseFloat(amount), date, category, month}]))
+    // fs.writeFileSync( expensesFile, JSON.stringify([...readExpenses(), {description, amount:parseFloat(amount), date, category, month}]))
    
-  const budgetdata= fs.readFileSync(budgetFile, "utf8");
+//   const budgetdata= fs.readFileSync(budgetFile, "utf8");
 
-  const budget = JSON.parse(budgetdata);
-  const budgetIndex = budget.findIndex((item) =>  item.name === category);
-  if (budgetIndex !== -1) {
-    budget[budgetIndex].spent += parseFloat(amount);
-    fs.writeFileSync(budgetFile, JSON.stringify(budget));
-    }
-
-  
+//   const budget = JSON.parse(budgetdata);
+//   const budgetIndex = budget.findIndex((item) =>  item.name === category);
+//   if (budgetIndex !== -1) {
+//     budget[budgetIndex].spent += parseFloat(amount);
+//     fs.writeFileSync(budgetFile, JSON.stringify(budget));
+//     }
 
 
-    if (description && amount && date && category) {
-        res.send({message: "Expense added successfully"})
-        } else {
-            res.send({message: "Please fill all fields"})
-            }
+    // if (description && amount && date && category) {
+    //     res.send({message: "Expense added successfully"})
+    //     } else {
+    //         res.send({message: "Please fill all fields"})
+    //         }
 
-
+db.query("INSERT INTO expenses (id, email, description, amount, date, category, month) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [req.user.id, req.user.email, description, parseFloat(amount), date, category , month], (err) => { if (err) { 
+            console.error("Error inserting expense:", err);
+            return res.status(500).send("Database error");
+        }
+        res.send({message: "Expense added successfully"});
+    });
     
 }
 
 const expensesget = (req, res) =>{
-    const expenses = readExpenses();
-    res.send(expenses);
+    // const expenses = readExpenses();
+    // res.send(expenses);
+
+    db.query("SELECT * FROM expenses WHERE id = ?", [req.user.id], (err, rows) => {
+        if (err) {
+            console.error("Error fetching expenses:", err);
+            return res.status(500).send("Database error");
+            }
+            rows = rows.map(row => ({
+                id: row.id,
+                email: row.email,
+                description: row.description,
+                amount: parseFloat(row.amount),
+                date: row.date,
+                category: row.category,
+                month: row.month
+            }));
+            res.send(rows);
+            });
 
 }
-module.exports = {expensesget, expensespost};
+module.exports = {expensesget, expensespost, authenticate};
 
 
 

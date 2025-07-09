@@ -1,1 +1,55 @@
-/* userDashboard.css is now empty to remove all custom styles */
+/* Custom styles for userDashboard page */
+
+/* Smooth background color transition for dark mode */
+body, #root, main {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navigation links container */
+nav[aria-label="Dashboard navigation"] a {
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Navigation links hover and focus */
+nav[aria-label="Dashboard navigation"] a:hover,
+nav[aria-label="Dashboard navigation"] a:focus {
+  text-decoration: underline;
+  color: #166534; /* Tailwind green-900 */
+  outline: none;
+  box-shadow: 0 0 0 2px #22c55e; /* Tailwind green-500 ring */
+}
+
+/* Loading and error messages */
+.text-center.animate-pulse {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.text-center.text-red-600.font-semibold {
+  font-size: 1.125rem;
+}
+
+/* Widgets section spacing */
+section.grid > div.lg\:col-span-2 > * {
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+  background-color: white;
+  padding: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.dark section.grid > div.lg\:col-span-2 > * {
+  background-color: #1f2937; /* Tailwind gray-800 */
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

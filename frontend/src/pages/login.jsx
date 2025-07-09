@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/login.css"; // Assuming you have a CSS file for styling
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-     const res = await fetch("https://budgetbloom-app.onrender.com/login", {
+     const res = await fetch("http://localhost:3201/login", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -53,25 +54,31 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          onChange={handleChange}
-          required
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          name="password"
-          onChange={handleChange}
-          required
-          placeholder="Password"
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-container min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-800">
+      <div>
+        <h1>Login Page</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="email"
+            name="email"
+            onChange={handleChange}
+            required
+            placeholder="Email"
+            className="input"
+          />
+          <input
+            type="password"
+            name="password"
+            onChange={handleChange}
+            required
+            placeholder="Password"
+            className="input"
+          />
+          <button type="submit" className="w-full">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

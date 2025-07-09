@@ -1,38 +1,30 @@
 [
+  
   {
-    "source": "investing",
-    "amount": "2000",
-    "category": "trading",
-    "date": "2025-06-17"
-  },
-  {
-    "source": "investing",
-    "amount": "2000",
-    "category": "trading",
-    "date": "2025-06-17"
-  },
-  {
-    "source": "investing",
-    "amount": "2000",
-    "category": "trading",
-    "date": "2025-06-17"
-  },
-  {
-    "source": "online trade",
-    "amount": "2000",
-    "category": "online trading",
-    "date": "2025-06-17"
-  },
-  {
-    "source": "investing",
-    "amount": "2000",
-    "category": "jj",
-    "date": "2025-06-17"
-  },
-  {
-    "source": "investing",
-    "amount": "1100000",
-    "category": "jj",
-    "date": "2025-01-04"
+    "id": 37,
+    "email": "srikanth123@gmail.com",
+    "incomes": [
+      {
+        "source": "football",
+        "amount": "555",
+        "category": "food",
+        "date": "2025-02-02",
+        "createdAt": "2025-07-07T06:27:11.659Z"
+      },
+      {
+        "source": "football",
+        "amount": "555",
+        "category": "food",
+        "date": "2025-02-02",
+        "createdAt": "2025-07-07T06:27:11.804Z"
+      },
+      {
+        "source": "football",
+        "amount": "555",
+        "category": "food",
+        "date": "2025-02-02",
+        "createdAt": "2025-07-07T06:27:12.288Z"
+      }
+    ]
   }
 ]

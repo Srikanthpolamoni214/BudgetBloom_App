@@ -14,11 +14,12 @@ const ExpenseForm = ({ onExpenseAdded }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+const token = localStorage.getItem("token"); // Get token from storage
+const config = { headers: { authorization: `Bearer ${token}` } };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3201/postexpenses', formData);
+      const response = await axios.post('http://localhost:3201/postexpenses', formData, config);
       console.log("res" , response);
       if (response.data.message === 'Expense added successfully') {
         const updatedExpenses = await axios.get('http://localhost:3201/expenses');
