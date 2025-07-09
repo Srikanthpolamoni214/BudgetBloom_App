@@ -19,10 +19,10 @@ const UserDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const [incomeRes, expenseRes] = await Promise.all([
-          fetch('http://localhost:3201/getIncome', { headers: {
+          fetch('https://budgetbloom-app.onrender.com/getIncome', { headers: {
             Authorization: `Bearer ${token}`
           }}, { signal: controller.signal }),
-          fetch('http://localhost:3201/expenses', { headers: {
+          fetch('https://budgetbloom-app.onrender.com/expenses', { headers: {
             Authorization: `Bearer ${token}`
           }}, { signal: controller.signal }),
         ]);

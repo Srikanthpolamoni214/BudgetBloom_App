@@ -19,7 +19,7 @@ const ExpensePage = () => {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get('http://localhost:3201/expenses',  config );
+        const response = await axios.get('https://budgetbloom-app.onrender.com/expenses',  config );
         setExpenses(response.data);
         setFilteredExpenses(response.data);
       } catch (err) {

@@ -20,7 +20,7 @@ const ReceiptUploader = () => {
 
     try {
       setUploading(true);
-      const response = await axios.post('http://localhost:3201/receipts', formData, {
+      const response = await axios.post('https://budgetbloom-app.onrender.com/receipts', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 

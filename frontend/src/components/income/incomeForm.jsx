@@ -21,9 +21,9 @@ const IncomeForm = ({ onIncomeAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3201/income', formData, config);
+      const response = await axios.post('https://budgetbloom-app.onrender.com/income', formData, config);
       if (response.data.message === "Income Added Successfully") {
-        const updatedIncome = await axios.get('http://localhost:3201/getIncome');
+        const updatedIncome = await axios.get('https://budgetbloom-app.onrender.com/getIncome');
         onIncomeAdded(updatedIncome.data);
         setFormData({ source: '', amount: '', category: '', date: '' });
         alert("Income added successfully");

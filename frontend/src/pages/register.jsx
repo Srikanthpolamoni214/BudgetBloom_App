@@ -206,7 +206,7 @@ const Register = () => {
 
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:3201/register', {
+      const res = await fetch('https://budgetbloom-app.onrender.com/register', {
         method: 'POST',
         body: formData,
       });
@@ -238,7 +238,7 @@ const Register = () => {
       const decoded = jwtDecode(credentialResponse.credential);
       const { name, email, picture } = decoded;
 
-      const res = await fetch('http://localhost:3201/google-auth', {
+      const res = await fetch('https://budgetbloom-app.onrender.com/google-auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ const GoalProgressBar = () => {
   useEffect(() => {
     const fetchGoals = async () => {
       try {
-        const res = await axios.get('http://localhost:3201/goalRouter');
+        const res = await axios.get('https://budgetbloom-app.onrender.com/goalRouter');
         setGoals(res.data);
       } catch (err) {
         setError('Failed to fetch goals :' + err);

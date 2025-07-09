@@ -19,10 +19,10 @@ const config = { headers: { authorization: `Bearer ${token}` } };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3201/postexpenses', formData, config);
+      const response = await axios.post('https://budgetbloom-app.onrender.com/postexpenses', formData, config);
       console.log("res" , response);
       if (response.data.message === 'Expense added successfully') {
-        const updatedExpenses = await axios.get('http://localhost:3201/expenses');
+        const updatedExpenses = await axios.get('https://budgetbloom-app.onrender.com/expenses');
         onExpenseAdded(updatedExpenses.data);
         setFormData({ description: '', amount: '', category: '', date: '' });
         alert("Expense added successfully");

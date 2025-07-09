@@ -21,7 +21,7 @@ const IncomePage = () => {
 
 
       try {
-        const response = await axios.get('http://localhost:3201/getIncome',  config);
+        const response = await axios.get('https://budgetbloom-app.onrender.com/getIncome',  config);
         console.log('Fetched income data:', response.data);
         setIncomeData(response.data);
 console.log( 'Setting filtered data:', response.data);

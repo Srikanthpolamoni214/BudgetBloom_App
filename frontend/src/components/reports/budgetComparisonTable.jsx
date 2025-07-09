@@ -70,7 +70,7 @@ const BudgetComparisonTable = () => {
 
   useEffect(() => {
     const fetchBudgets = async () => {
-      const response = await fetch("http://localhost:3201/budgets");
+      const response = await fetch("https://budgetbloom-app.onrender.com/budgets");
       const data = await response.json();
       setBudgets(data);
     };
@@ -79,7 +79,7 @@ const BudgetComparisonTable = () => {
 
   useEffect(() => {
     const fetchExpenses = async () => {
-      const response = await fetch("http://localhost:3201/expenses");
+      const response = await fetch("https://budgetbloom-app.onrender.com/expenses");
       const data = await response.json();
       setExpenses(data);
     };
