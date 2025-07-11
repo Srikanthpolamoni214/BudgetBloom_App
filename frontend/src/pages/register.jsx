@@ -206,7 +206,7 @@ const Register = () => {
 
     try {
       setLoading(true);
-      const res = await fetch('https://budgetbloom-app.onrender.com/register', {
+      const res = await fetch('http://localhost:3201/register', {
         method: 'POST',
         body: formData,
       });

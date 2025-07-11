@@ -48,6 +48,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // app.use(cors({ origin: "http://localhost:5173" }));
 
 // Routes
+app.get('/', (req, res) => {
+  res.send('🚀 BudgetBloom backend is running!');
+});
+
 app.use("/", loginRoute);
 app.use("/", registerRoute);
 app.use("/" ,  incomeRoute);
