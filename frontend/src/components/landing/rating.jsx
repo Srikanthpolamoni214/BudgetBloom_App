@@ -18,7 +18,7 @@ const Ratings = () => {
   const [total, setTotal] = useState(0);
 
   const fetchReviews = () => {
-    fetch('http://localhost:3201/api/reviews')
+    fetch('https://budgetbloom-app.onrender.com/api/reviews')
       .then((res) => res.json())
       .then((data) => {
         const sorted = data.reviews.sort(
