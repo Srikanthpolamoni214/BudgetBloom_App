@@ -112,7 +112,7 @@ const Navbar = () => {
             tabIndex={0}
           >
             <img 
-              src={`http://localhost:3201/uploads/${image}`}
+              src={`https://budgetbloom-app.onrender.com/uploads/${image}`}
               alt="Profile"  
               className="rounded-full object-cover border"  height={50}
               width={50}
