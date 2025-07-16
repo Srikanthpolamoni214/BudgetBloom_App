@@ -14,7 +14,7 @@ const RecentActivityList = () => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const res = await fetch('https://budgetbloom-app.onrender.com/api/transactions', config);
+        const res = await fetch('http://localhost:3201/api/transactions', config);
         const data = await res.json();
         console.log('Fetched transactions:', data);
         

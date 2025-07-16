@@ -14,7 +14,7 @@ const config = {
   },
 };
   const fetchGoals = async () => {
-    const res = await fetch('https://budgetbloom-app.onrender.com/api/goalsTracker', {
+    const res = await fetch('http://localhost:3201/api/goalsTracker', {
       method: 'GET',
       headers: config.headers,
     });
@@ -25,7 +25,7 @@ const config = {
   useEffect(() => { fetchGoals(); }, []);
 
   const deleteGoal = async (goal_id) => {
-    await fetch(`https://budgetbloom-app.onrender.com/api/goalsTracker/${goal_id}`, { method: 'DELETE', headers: config.headers });
+    await fetch(`http://localhost:3201/api/goalsTracker/${goal_id}`, { method: 'DELETE', headers: config.headers });
     fetchGoals();
   };
 

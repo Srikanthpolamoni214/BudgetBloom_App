@@ -13,7 +13,7 @@ const config = { headers: { 'Content-Type': 'application/json', Authorization: `
     e.preventDefault();
     if (!goal.name || !goal.amount || !goal.targetDate) return alert('Fill all required fields');
 
-    const res = await fetch('https://budgetbloom-app.onrender.com/api/goalsTracker', {
+    const res = await fetch('http://localhost:3201/api/goalsTracker', {
       method: 'POST',
       headers:  config.headers,
       body: JSON.stringify(goal),

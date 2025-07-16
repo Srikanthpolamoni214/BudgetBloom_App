@@ -19,10 +19,10 @@ const UserDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const [incomeRes, expenseRes] = await Promise.all([
-          fetch('https://budgetbloom-app.onrender.com/getIncome', { headers: {
+          fetch('http://localhost:3201/getIncome', { headers: {
             Authorization: `Bearer ${token}`
           }}, { signal: controller.signal }),
-          fetch('https://budgetbloom-app.onrender.com/expenses', { headers: {
+          fetch('http://localhost:3201/expenses', { headers: {
             Authorization: `Bearer ${token}`
           }}, { signal: controller.signal }),
         ]);
@@ -70,7 +70,7 @@ const UserDashboard = () => {
       </nav>
     );
   };
-
+  
   return (
     <main className="min-h-screen bg-green-50 px-4 sm:px-6 md:px-12 py-8 dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <h1 className="text-3xl font-extrabold text-green-800 text-center mb-6 dark:text-green-300">

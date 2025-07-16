@@ -6,7 +6,7 @@ const SpendingTrendChart = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("https://budgetbloom-app.onrender.com/report")
+    fetch("http://localhost:3201/report")
       .then(res => res.json())
       .then(data => setData(data));
      
