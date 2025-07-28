@@ -40,7 +40,7 @@
 //       }
 
 //       const query = `
-//         INSERT INTO users (userName, phoneNumber, email, password, age, gender, photo)
+//         INSERT INTO users (userName, phoneNumber, email, passwords, age, gender, photo)
 //         VALUES (?, ?, ?, ?, ?, ?, ?)
 //       `;
 //       const values = [userName, phoneNumber, email, hashedPassword, age, gender, photo];
